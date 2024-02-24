@@ -1,6 +1,6 @@
 [package]
 name = "gnostr-get-relays"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2021"
 authors = ["gnostr <admin@gnostr.org>"]
 description = "gnostr-get-relays: part of the gnostr workflow commands"
@@ -12,6 +12,7 @@ license = "MIT"
 build = "build.rs"
 
 [dependencies]
+curl = "0.4.46"
 getopts = "0.2.21"
 libc = "0.2"
 
