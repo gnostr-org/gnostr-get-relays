@@ -1,13 +1,13 @@
 [package]
 name = "gnostr-get-relays"
-version = "0.0.0"
+version = "0.0.1"
 edition = "2021"
 authors = ["gnostr <admin@gnostr.org>"]
 description = "gnostr-get-relays: part of the gnostr workflow commands"
 repository = "https://github.com/gnostr-org/gnostr-get-relays"
 documentation = "https://docs.rs/gnostr-get-relays"
 readme = "README.md"
-keywords = [ "nostr", "gnostr", "git"]
+keywords = [ "nostr", "gnostr", "git","ffi" ]
 license = "MIT"
 build = "build.rs"
 
