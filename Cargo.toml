@@ -12,6 +12,7 @@ license = "MIT"
 build = "build.rs"
 
 [dependencies]
+getopts = "0.2.21"
 libc = "0.2"
 
 [build-dependencies]
