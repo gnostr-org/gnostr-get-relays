@@ -27,6 +27,66 @@ fn get_relays_simple() {
 
     //println!("{}", easy.response_code().unwrap());
 }
+// Print a web page onto stdout
+fn mp_blockheight() {
+
+
+  use curl::easy::{Easy2, Handler, WriteError};
+
+  struct Collector(Vec<u8>);
+
+  impl Handler for Collector {
+      fn write(&mut self, data: &[u8]) -> Result<usize, WriteError> {
+          self.0.extend_from_slice(data);
+          Ok(data.len())
+      }
+  }
+
+  let mut easy = Easy2::new(Collector(Vec::new()));
+  easy.get(true).unwrap();
+  easy.url("https://mempool.space/api/blocks/tip/height").unwrap();
+  easy.perform().unwrap();
+
+  assert_eq!(easy.response_code().unwrap(), 200);
+
+  let contents = easy.get_ref();
+  println!("{}", String::from_utf8_lossy(&contents.0));
+
+  //let con_type: &str = easy.content_type().unwrap().unwrap();
+  //println!("{}", con_type);
+
+}
+
+//https://blockchain.info/q/getblockcount
+fn bc_blockheight() {
+
+
+  use curl::easy::{Easy2, Handler, WriteError};
+
+  struct Collector(Vec<u8>);
+
+  impl Handler for Collector {
+      fn write(&mut self, data: &[u8]) -> Result<usize, WriteError> {
+          self.0.extend_from_slice(data);
+          Ok(data.len())
+      }
+  }
+
+  let mut easy = Easy2::new(Collector(Vec::new()));
+  easy.get(true).unwrap();
+  easy.url("https://mempool.space/api/blocks/tip/height").unwrap();
+  easy.perform().unwrap();
+
+  assert_eq!(easy.response_code().unwrap(), 200);
+
+  let contents = easy.get_ref();
+  println!("{}", String::from_utf8_lossy(&contents.0));
+
+  //let con_type: &str = easy.content_type().unwrap().unwrap();
+  //println!("{}", con_type);
+
+}
+
 
 fn do_work(inp: &str, _out: Option<String>) {
     //println!("{}", inp);
@@ -68,6 +128,8 @@ fn main() {
     opts.optflag("j", "json", "return json object");
     opts.optopt("o", "output", "set output file name", "NAME");
     opts.optopt("i", "input", "Input an integer (default: 10)", "NUMBER");
+    opts.optflag("m", "mpbh", "mempool bitcoin block height/count");
+    opts.optflag("b", "bcbh", "blockchain bitcoin block height/count");
 
     if args.len() >= 1 {
         let matches = match opts.parse(&args[1..]) {
@@ -84,6 +146,16 @@ fn main() {
         if matches.opt_present("j") {
             //returns json
             get_relays_simple();
+            process::exit(0);
+        }
+        if matches.opt_present("m") {
+            //returns json
+            mp_blockheight();
+            process::exit(0);
+        }
+        if matches.opt_present("b") {
+            //returns json
+            bc_blockheight();
             process::exit(0);
         }
 
