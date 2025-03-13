@@ -15,11 +15,11 @@ fn do_work(inp: &str, _out: Option<String>) {
     }
 
     //let _output = unsafe { gnostr_get_relays::gnostr_get_relays(input) };
-    let _output = /*unsafe {*/ gnostr_get_relays::get_relays(input)/* }*/;
+    //let _output = /*unsafe {*/ gnostr_get_relays::get_relays(input)/* }*/;
     //println!("output....\n{:?}", _output);
 
     let _get_list = unsafe { gnostr_get_relays::get_list() };
-    println!("{:?}", _get_list);
+    print!("{:?}", _get_list);
 }
 
 pub fn print_usage(program: &str, opts: &Options) {
