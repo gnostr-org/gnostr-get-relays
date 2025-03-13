@@ -8,11 +8,11 @@ extern crate gnostr_get_relays;
 
 fn do_work(inp: &str, _out: Option<String>) {
     //println!("{}", inp);
-    let mut input: i32 = inp.trim().parse().expect("Wanted a number");
+    let _input: i32 = inp.trim().parse().expect("Wanted a number");
 
-    if input < 100 {
-        input = 100;
-    }
+    //if input < 100 {
+    //    input = 100;
+    //}
 
     //let _output = unsafe { gnostr_get_relays::gnostr_get_relays(input) };
     //let _output = /*unsafe {*/ gnostr_get_relays::get_relays(input)/* }*/;

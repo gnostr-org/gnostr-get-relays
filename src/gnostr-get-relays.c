@@ -65,6 +65,8 @@ char* read_file_to_string(const char* filename) {
 }
 
 char* get_list() {
+
+	gnostr_get_relays(0);
     const char* filename = "/tmp/gnostr.relays"; // Replace with your filename.
 
     // Create a dummy file for testing, if it doesn't already exist.
