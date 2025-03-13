@@ -7,7 +7,7 @@ use std::process;
 extern crate gnostr_get_relays;
 
 fn do_work(inp: &str, _out: Option<String>) {
-    println!("{}", inp);
+    //println!("{}", inp);
     let mut input: i32 = inp
         .trim()
         .parse()
@@ -16,12 +16,15 @@ fn do_work(inp: &str, _out: Option<String>) {
     if input < 100 {
       input = 100;
     }
-    let _output = unsafe { gnostr_get_relays::gnostr_get_relays(input) };
-    //match _out {
-    //    //TODO call gnostr-set-relays //Some(x) => println!("{}", x),
-    //    Some(x) => println!("{}", x),
-    //    None => println!("No Output"),
-    //}
+
+    //let _output = unsafe { gnostr_get_relays::gnostr_get_relays(input) };
+    let _output = /*unsafe {*/ gnostr_get_relays::get_relays(input)/* }*/;
+	//println!("output....\n{:?}", _output);
+
+
+    let _get_list = unsafe { gnostr_get_relays::get_list() };
+	println!("{:?}", _get_list);
+
 }
 
 pub fn print_usage(program: &str, opts: &Options) {
@@ -37,7 +40,7 @@ pub fn print_usage(program: &str, opts: &Options) {
 //}
 
 pub fn print_input(inp: &str, out: Option<String>) {
-    println!("{}", inp);
+    //println!("{}", inp);
     match out {
         Some(x) => println!("{}", x),
         None => println!("No Output"),
