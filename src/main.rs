@@ -39,7 +39,7 @@ pub fn print_usage(program: &str, opts: &Options) {
 //    process::exit(0);
 //}
 
-pub fn print_input(inp: &str, out: Option<String>) {
+pub fn print_input(_inp: &str, out: Option<String>) {
     //println!("{}", inp);
     match out {
         Some(x) => println!("{}", x),
